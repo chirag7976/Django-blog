@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block title %} Post Title {% endblock title %}
+{% block body %} 
+
+<div class="container my-3" style="background-color: rgb(209, 187, 187); border-radius: 20px;">
+
+<img src="/media/{{post.img}}" class="img_container"/>
+
+<h1 class="my-3">{{post.title}}</h1>
+<p>Author - {{post.author.username}}</p>
+<p>Date-Posted on : {{post.date_posted}}</p>
+<p>
+{{post.content}}
+</p>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block title %} Profile View {% endblock title %}
+{%block body %}
+
+<div class="container my-3" style="background-color: white;border-radius: 10px;">
+  <h1 class="my-2 p-2">PROFILE</h1>
+  <div class="my-3">
+    <label for="InputUsername" class="form-label">UserName</label>
+    <input type="text"  disabled value="{{request.user.username}}" class="form-control" id="InputUsername"/>
+  </div>
+  <div class="my-3">
+    <label for="InputEmail" class="form-label">Email address</label>
+    <input type="email" disabled value="{{request.user.email}}" class="form-control" id="InputEmail"/>
+  </div>
+
+  <h2>Posts By You :</h2>
+
+  {% for post in posts %}
+  <div class="card bg-dark my-4 text-white">
+    <img src="/media/{{post.img}}"  class="post_bg_img card-img" alt="..."/>
+    <div class="card-img-overlay">
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">
+        {{post.content |slice:":200"}}
+      </p>
+      <p class="card-text">Author - {{post.author.username}}</p>
+      <p class="card-text">{{post.date_posted}}</p>
+      <a href="viewPost/{{post.id}}" class="btn btn-primary">Read More</a>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock body %}

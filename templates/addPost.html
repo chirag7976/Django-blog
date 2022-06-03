@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Blog App {% endblock title %}
+{%block body %}
+
+<div class="container my-4" style="background-color: rgb(255, 255, 255); border-radius: 20px">
+  <h2 class="my-3">Add New Post</h2>
+  <form action="addPost" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="inputtitle" class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" id="inputtitle" placeholder="Enter Title.." />
+  </div>
+  <div class="mb-3">
+    <label for="inputcontent" class="form-label">Blog Content</label>
+    <textarea class="form-control" name="content" id="inputcontent" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="formFile" class="form-label">Enter Image File</label>
+    <input class="form-control" name="img" type="file" id="formFile" />
+  </div>
+  <button type="submit" class="btn btn-success my-3">Add Post</button>
+</form>
+</div>
+
+{% endblock body %}
